@@ -414,18 +414,21 @@ document.addEventListener("keydown", (e) => {
 
 function spawnHearts(event) {
   const layer = document.getElementById("confetti-layer");
-  const icons = ["🩵", "🩷", "✨", "🫧"];
+  const icons = ["🩵", "🩷", "✨", "🫧", "💫", "🌸"];
   const originX = event && event.clientX ? event.clientX : window.innerWidth / 2;
   const originY = event && event.clientY ? event.clientY : window.innerHeight / 2;
 
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 10; i++) {
     const span = document.createElement("span");
     span.className = "floating-heart";
     span.textContent = icons[Math.floor(Math.random() * icons.length)];
-    span.style.left = (originX + (Math.random() * 80 - 40)) + "px";
-    span.style.top = (originY + (Math.random() * 30 - 15)) + "px";
+    const offsetX = Math.random() * 100 - 50;
+    const offsetY = Math.random() * 40 - 20;
+    span.style.left = (originX + offsetX) + "px";
+    span.style.top = (originY + offsetY) + "px";
+    span.style.fontSize = (18 + Math.random() * 10) + "px";
     layer.appendChild(span);
-    setTimeout(() => span.remove(), 1200);
+    setTimeout(() => span.remove(), 1400);
   }
 }
 
