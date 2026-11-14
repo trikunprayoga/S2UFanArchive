@@ -40,7 +40,7 @@ const albumsData = [
     title: "FOCUS.", shortTitle: "FOCUS",
     meta: "Hearts2Hearts • 1st Mini Album • 20 Okt 2025",
     about: "Mini album perdana yang memuncaki tangga lagu, dilengkapi B-side favorit S2U seperti Apple Pie & Blue Moon.",
-    emoji: "✨", cover: "assets/images/albums/focus.jpg", tracks: [4, 3, 5, 6, 7]
+    emoji: "✨", cover: "assets/images/albums/focus.jpg", tracks: [3, 4, 5, 6, 7]
   },
   {
     title: "RUDE!", shortTitle: "RUDE!",
@@ -540,8 +540,53 @@ function togglePlay() {
   renderShowcaseAlbum();
 }
 
-function nextSong() { playSong((currentSongIndex + 1) % songsData.length); }
-function prevSong() { playSong((currentSongIndex - 1 + songsData.length) % songsData.length); }
+function nextSong() {
+  const currentAlbum = albumsData[currentAlbumIndex];
+  if (!currentAlbum || !currentAlbum.tracks) {
+    playSong((currentSongIndex + 1) % songsData.length);
+    return;
+  }
+
+  const trackPos = currentAlbum.tracks.indexOf(currentSongIndex);
+  if (trackPos !== -1 && trackPos < currentAlbum.tracks.length - 1) {
+    // Lanjut ke lagu berikutnya dalam album yang sama
+    playSong(currentAlbum.tracks[trackPos + 1]);
+  } else {
+    // Jika sudah di akhir album, lanjut ke album berikutnya
+    const nextAlbumIdx = (currentAlbumIndex + 1) % albumsData.length;
+    const nextAlbum = albumsData[nextAlbumIdx];
+    if (nextAlbum && nextAlbum.tracks && nextAlbum.tracks.length > 0) {
+      currentAlbumIndex = nextAlbumIdx;
+      playSong(nextAlbum.tracks[0]);
+    } else {
+      playSong((currentSongIndex + 1) % songsData.length);
+    }
+  }
+}
+
+function prevSong() {
+  const currentAlbum = albumsData[currentAlbumIndex];
+  if (!currentAlbum || !currentAlbum.tracks) {
+    playSong((currentSongIndex - 1 + songsData.length) % songsData.length);
+    return;
+  }
+
+  const trackPos = currentAlbum.tracks.indexOf(currentSongIndex);
+  if (trackPos > 0) {
+    // Kembali ke lagu sebelumnya dalam album yang sama
+    playSong(currentAlbum.tracks[trackPos - 1]);
+  } else {
+    // Jika sudah di awal album, kembali ke album sebelumnya
+    const prevAlbumIdx = (currentAlbumIndex - 1 + albumsData.length) % albumsData.length;
+    const prevAlbum = albumsData[prevAlbumIdx];
+    if (prevAlbum && prevAlbum.tracks && prevAlbum.tracks.length > 0) {
+      currentAlbumIndex = prevAlbumIdx;
+      playSong(prevAlbum.tracks[prevAlbum.tracks.length - 1]);
+    } else {
+      playSong((currentSongIndex - 1 + songsData.length) % songsData.length);
+    }
+  }
+}
 
 function seekSong(val) {
   if (isDemoMode) {
