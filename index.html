@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f9fbff">
+  <title>Hearts2Hearts — S2U Interactive Fansite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-area">Lewati ke konten</a>
+  <header class="top-header">
+    <button type="button" class="brand" data-tab="home" aria-label="Hearts2Hearts, kembali ke Home">
+      <span class="brand-art">
+        <span class="pixel-wing" aria-hidden="true"></span>
+        <img src="assets/images/logo/logo-h2h.png" alt="">
+      </span>
+      <span>Hearts<span class="brand-two">2</span>Hearts</span>
+    </button>
+    <nav class="main-nav" aria-label="Navigasi utama">
+      <button type="button" data-tab="home" aria-current="page">Home</button>
+      <button type="button" data-tab="members">Members</button>
+      <button type="button" data-tab="albums">Albums</button>
+      <button type="button" data-tab="songs">Songs</button>
+      <button type="button" data-tab="journey">Journey</button>
+    </nav>
+    <div class="header-actions">
+      <button type="button" class="search-trigger" id="open-search" aria-label="Cari lagu, album, atau member" aria-haspopup="dialog">
+        <span class="icon search-icon" aria-hidden="true"></span><span class="search-hint">Cari di fansite</span><kbd aria-hidden="true">/</kbd>
+      </button>
+      <button type="button" class="s2u-button" id="send-love" title="Kirim hati untuk Hearts2Hearts" aria-label="Kirim hati untuk Hearts2Hearts"><span class="pixel-heart" aria-hidden="true"></span> S2U</button>
+    </div>
+  </header>
+
+  <main id="main-area" tabindex="-1">
+    <section id="view-home" class="tab-view" aria-label="Home">
+      <section class="hero" id="hero" aria-labelledby="showcase-album-title">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="showcase-index"><span class="disc-symbol" aria-hidden="true"></span> Album showcase <span class="index-divider"></span><span id="showcase-era-label">Era 05 / 09</span></div>
+            <h1 id="showcase-album-title">Lemon Tang<span class="title-dot">.</span></h1>
+            <p class="album-meta" id="showcase-album-meta">2nd Mini Album <span>·</span> 22 Jun 2026</p>
+            <p class="album-about" id="showcase-about-text">Mini album musim panas yang ceria dan menyegarkan dengan lagu andalan Lemon Tang serta 15-LOVE.</p>
+            <div class="hero-actions">
+              <button type="button" class="button primary" id="era-play"><span class="icon play-icon" aria-hidden="true"></span><span class="button-label">Putar era</span></button>
+              <button type="button" class="button save-button" id="save-album" aria-pressed="false"><span class="heart-glyph" aria-hidden="true">♡</span><span class="button-label">Simpan</span></button>
+            </div>
+          </div>
+
+          <button type="button" class="art-panel" id="main-cover-wrap" aria-label="Putar Lemon Tang. dari showcase">
+            <span class="art-orbit orbit-a" aria-hidden="true"></span>
+            <span class="art-orbit orbit-b" aria-hidden="true"></span>
+            <span class="art-star star-a" aria-hidden="true"></span>
+            <span class="art-star star-b" aria-hidden="true"></span>
+            <span class="art-star star-c" aria-hidden="true"></span>
+            <span class="album-object">
+              <span class="compact-disc" aria-hidden="true"><span class="disc-surface"></span><span class="disc-hub"></span></span>
+              <span class="hero-sleeve">
+                <span class="cover-skin era-4" id="hero-skin" aria-hidden="true">
+                  <span class="sleeve-artist">Hearts2Hearts</span>
+                  <span class="sleeve-motif" id="sleeve-motif">🍋</span>
+                  <span class="sleeve-title" id="sleeve-title">Lemon Tang</span>
+                  <span class="sleeve-format" id="sleeve-format">2nd Mini Album</span>
+                </span>
+                <img id="main-cover-img" src="assets/images/albums/lemon-tang.jpg" alt="" draggable="false">
+              </span>
+              <span class="fan-sticker" aria-hidden="true"><span class="sticker-heart">♥</span>S2U</span>
+            </span>
+          </button>
+
+          <div class="era-nav" aria-label="Pilih era album" role="group">
+            <button type="button" class="era-arrow" id="prev-era" aria-label="Era sebelumnya" title="Era sebelumnya"><span class="arrow-icon left" aria-hidden="true"></span><span class="era-peek" aria-hidden="true"><span class="thumb"><span class="thumb-fallback"></span><img alt=""></span><b></b></span></button>
+            <div class="carousel-dots" id="carousel-dots"></div>
+            <button type="button" class="era-arrow" id="next-era" aria-label="Era berikutnya" title="Era berikutnya"><span class="arrow-icon" aria-hidden="true"></span><span class="era-peek" aria-hidden="true"><span class="thumb"><span class="thumb-fallback"></span><img alt=""></span><b></b></span></button>
+          </div>
+        </div>
+      </section>
+
+      <div class="home-grid">
+        <section class="track-panel" aria-labelledby="track-heading">
+          <div class="section-heading"><h2 id="track-heading">Tracklist<span class="small-dot">.</span></h2><span id="track-count" class="count">5 lagu</span></div>
+          <div class="track-list" id="showcase-tracklist"></div>
+        </section>
+
+        <section class="fan-panel" aria-labelledby="fan-heading">
+          <div class="section-heading"><h2 id="fan-heading">Sudut S2U<span class="small-dot pink">.</span></h2><button type="button" class="text-link" id="open-group" aria-haspopup="dialog">Foto grup <span class="jump-arrow" aria-hidden="true"></span></button></div>
+          <div class="gacha-panel">
+            <div class="gacha-copy">
+              <h3>Gacha bias</h3>
+              <p>Siapa yang ada di balik photocard-mu?</p>
+              <button type="button" class="gacha-button" data-lucky aria-haspopup="dialog">Tarik kartu <span class="jump-arrow" aria-hidden="true"></span></button>
+            </div>
+            <div class="card-stack" aria-hidden="true"><span class="mini-card card-back"></span><span class="mini-card card-front"><span class="pixel-wing"></span><b>H2H</b></span><span class="twinkle">✦</span></div>
+          </div>
+          <div class="mascot-note">
+            <button type="button" class="mascot-trigger" id="poke-mascot" aria-label="Baca trivia Falabella berikutnya" title="Trivia berikutnya">
+              <span class="mascot-avatar"><span aria-hidden="true">🐴</span><img src="assets/images/logo/mascot-falabella.png" alt=""></span>
+            </button>
+            <div><strong>Falabella</strong><p id="falabella-bubble" role="status">Halo, S2U! Ketuk aku untuk membaca trivia H2H.</p></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="tab-view library-view" id="view-members" aria-labelledby="members-heading" hidden>
+      <div class="view-heading"><div><h2 id="members-heading">Members<span class="small-dot pink">.</span></h2><p>Delapan photocard Hearts2Hearts. Buka satu untuk mengenal membernya.</p></div>
+        <button type="button" class="button primary" data-lucky aria-haspopup="dialog"><span class="pixel-wing" aria-hidden="true"></span> Gacha bias</button>
+      </div>
+      <div class="photocard-grid" id="members-grid"></div>
+    </section>
+
+    <section class="tab-view library-view" id="view-albums" aria-labelledby="albums-heading" hidden>
+      <div class="view-heading"><div><h2 id="albums-heading">Albums<span class="small-dot">.</span></h2><p>Pilih sampul untuk membuka era dan memutar lagu pertamanya.</p></div>
+        <div class="filter-tabs" aria-label="Filter album" role="group"><button type="button" id="all-albums" aria-pressed="true">Semua</button><button type="button" id="saved-albums" aria-pressed="false">Tersimpan <span id="saved-total">0</span></button></div>
+      </div>
+      <div class="albums-grid" id="albums-grid"></div>
+    </section>
+
+    <section class="tab-view library-view" id="view-songs" aria-labelledby="songs-heading" hidden>
+      <div class="view-heading"><div><h2 id="songs-heading">Songs<span class="small-dot">.</span></h2><p>18 lagu grup dan 2 OST member dalam satu koleksi.</p></div>
+        <button type="button" class="button light" data-search-songs><span class="icon search-icon" aria-hidden="true"></span>Cari lagu</button>
+      </div>
+      <div class="song-library" id="songs-list"></div>
+    </section>
+
+    <section class="tab-view library-view" id="view-journey" aria-labelledby="journey-heading" hidden>
+      <div class="view-heading"><div><h2 id="journey-heading">Journey<span class="small-dot pink">.</span></h2><p>Perjalanan Hearts2Hearts bersama S2U, dari panggung SMTOWN hingga debut Jepang.</p></div></div>
+      <div class="journey-grid">
+        <ol class="timeline" id="timeline-list"></ol>
+        <div class="identity-col">
+          <section class="identity-card sky-card"><span class="color-chip" aria-hidden="true"></span><h3>Sky Blue &amp; S2U</h3><dl><dt>Warna</dt><dd>Sky Blue · #7EC8E3</dd><dt>Fandom</dt><dd>S2U (하츄 / Hachu)</dd><dt>Konsep</dt><dd>Mystic &amp; Girlhood</dd></dl></section>
+          <section class="identity-card"><h3>Falabella</h3><div class="mascot-row"><span class="mascot-avatar"><span aria-hidden="true">🐴</span><img src="assets/images/logo/mascot-falabella.png" alt="Falabella"></span><p>Kuda mini berambut biru langit yang menemani Hearts2Hearts dan S2U.</p></div></section>
+          <button type="button" id="journey-group" class="group-preview" aria-haspopup="dialog"><span class="group-cover"><span class="pixel-wing" aria-hidden="true"></span><img src="assets/images/group/h2h-full.jpg" alt=""></span><span>Foto grup <span class="jump-arrow" aria-hidden="true"></span></span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="player" aria-label="Pemutar musik">
+    <div class="player-song">
+      <span class="player-cover" id="player-cover"><span aria-hidden="true" id="player-cover-symbol">🍋</span><img id="mp-cover" alt=""></span>
+      <div class="player-copy"><strong id="mp-title">Lemon Tang</strong><small id="mp-artist">Hearts2Hearts</small></div>
+    </div>
+    <div class="transport">
+      <button type="button" class="icon-btn" id="mp-prev" aria-label="Lagu sebelumnya" title="Lagu sebelumnya"><span class="skip-icon prev" aria-hidden="true"></span></button>
+      <button type="button" class="round-play" id="mp-play-btn" aria-label="Putar lagu" title="Putar lagu"><span class="icon play-icon" aria-hidden="true"></span></button>
+      <button type="button" class="icon-btn" id="mp-next" aria-label="Lagu berikutnya" title="Lagu berikutnya"><span class="skip-icon" aria-hidden="true"></span></button>
+    </div>
+    <div class="progress-area">
+      <span id="mp-elapsed" aria-hidden="true">0:00</span>
+      <input type="range" id="mp-progress" min="0" max="100" step="0.1" value="0" aria-label="Posisi pemutaran" disabled>
+      <span id="mp-duration" aria-hidden="true">–:––</span>
+    </div>
+    <div class="player-tools">
+      <button type="button" class="icon-btn" id="mp-like" aria-label="Kirim hati untuk lagu ini" title="Kirim hati"><span class="heart-glyph" aria-hidden="true">♡</span></button>
+      <button type="button" class="icon-btn" id="mp-list" aria-label="Lihat daftar lagu" title="Daftar lagu"><span class="queue-icon" aria-hidden="true"></span></button>
+    </div>
+    <audio id="main-audio" preload="none"></audio>
+  </section>
+
+  <dialog class="app-dialog" id="app-modal" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <button type="button" class="icon-btn modal-close" id="modal-close" aria-label="Tutup" title="Tutup"><span class="close-icon" aria-hidden="true"></span></button>
+      <div id="modal-content"></div>
+    </div>
+    <div class="confetti-layer" aria-hidden="true"></div>
+  </dialog>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+  <div class="sr-only" id="live-status" role="status"></div>
+</body>
+</html>
